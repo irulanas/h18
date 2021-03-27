@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kementerian Komunikasi dan Informatika Republik Indonesia</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+	<link rel="stylesheet" href="assets/styles/responsive.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   </head>
 <body>
 	<header>
        <div class="judul">
-			      <img src="logo.png" class="logo">
+			      <img src="assets/image/logo.png" class="logo" alt="">
 	     </div>
        <nav>
-		      <ul>
+		<a href="#" id="pull"></a>
+		  <ul>
             <li><a href="#sejarah">Sejarah</a></li>
             <li><a href="#vimi">Visi dan Misi</a></li>
           </ul>
+		  
 		</nav>
     </header>
 	<main>
        <div id="content">
            <article id="sejarah" class="card">
                <h2>Sejarah</h2>
-               <img src="sejarah.jpg" class="featured-image" alt="sejarah">
+               <img src="assets/image/sejarah.jpg" class="featured-image" alt="sejarah">
 					<p>Sesuai Undang-Undang Nomor 39 Tahun 2008 tentang Kementerian Negara, Kementerian Kominfo merupakan perangkat Pemerintah Republik Indonesia ini membidangi urusan yang ruang lingkupnya disebutkan dalam Undang-Undang Dasar Negara Republik Indonesia Tahun 1945, yaitu informasi dan komunikasi.</p>
 					<h3>Bermula dari Deppen</h3>
 						<p>Kementerian Komunikasi dan Informatika, sebelumnya bernama "Departemen Penerangan" (1945-1999), "Kementerian Negara Komunikasi dan Informasi" (2001-2005), dan Departemen Komunikasi dan Informatika (Depkominfo) (2005-2009). </p>
@@ -58,7 +62,12 @@
 			<article class="card">
 				<header>
 				    <div class="container">
-						<img src="logo.png" class="logo">
+						<img src="assets/image/logo.png" class="logo" alt="">
+						<p>Tanggal/Waktu: <span id="tanggalwaktu"></span></p>
+						<script>
+							var dt = new Date();
+							document.getElementById("tanggalwaktu").innerHTML = dt.toLocaleString();
+						</script>
 				</header>
 				<section>
 					</tr></tbody></table>
@@ -90,7 +99,7 @@
 				<header>
 					<h2>Khoirul Annas</h2>
 					<figure>
-						<img src="anas.jpg">
+						<img src="assets/image/anas.jpg" alt="">
 					</figure>
 				</header>
 				<section>
@@ -129,7 +138,7 @@
 				<header>
 					<h2>Agitha Asmarani</h2>
 					<figure>
-						<img src="agitha.jpg">
+						<img src="assets/image/agitha.jpg" alt="">
 					</figure>
 				</header>
 				<section>
@@ -167,6 +176,22 @@
    <footer>
 		<p>© Kelompok H18, 26 March 2021</p>   
    </footer>
+   <script>
+	$(function() {
+		var pull 		= $('#pull'); // Variabel tombol navigasi (akan muncul hanya pada perangkat mobile)
+			menu 		= $('nav ul'); // Variabel menu
 
+		$(pull).on('click', function(e) {
+			e.preventDefault();
+			menu.slideToggle();
+		});
+		$(window).resize(function(){
+			var w = $(window).width();
+			if(w > 600 && menu.is(':hidden')) {
+				menu.removeAttr('style');
+			}
+		});
+	});
+</script>
 </body></html>
    
